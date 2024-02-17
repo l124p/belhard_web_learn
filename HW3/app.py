@@ -1,21 +1,24 @@
 from flask import Flask, request
-from test import get_weather
+from weather import get_weather
 from datetime import datetime
 
-apikey = 'dbb4003ac34a3a47a2da0de9e73e2514'
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
+    with open('index.html', 'rb') as f:
+        return f.read()
+
+
+@app.route('/weather')
+def weather():
     city = 'minsk'
-    url = f'https://api.openweathermap.org/data/2.5/weather'
-    params = {'q': city, 'appid': apikey, 'units': 'metric'}
-    data = get_weather(url, params)
+    temp = get_weather(city)
     cur_date = datetime.now().strftime('%d.%m.%y')
     print(cur_date)
-    return data
+    return f'<h1>City: {city}</h1> <p>Temp: {temp}</p>'
 
 
 @app.route('/news')
