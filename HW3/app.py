@@ -1,7 +1,7 @@
 from flask import Flask, request
 from datetime import datetime
 import asyncio
-from HW3.weather.weather import get_weather, get_weather_async
+from weather.weather import get_weather, get_weather_async
 
 app = Flask(__name__)
 
