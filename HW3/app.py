@@ -1,7 +1,7 @@
 from flask import Flask, request
 from datetime import datetime
 import asyncio
-from HW3.weather.weather import get_weather, get_weather_async
+from weather.weather import get_weather, get_weather_async
 
 app = Flask(__name__)
 
@@ -20,13 +20,13 @@ def weather():
     if city == 'Все города':
         response = asyncio.run(get_weather_async(cities))
         for item in response:
-            out += f'<p>В городе <b>{item['city']}</b> температура воздуха составляет <b>{item['temp']}</b> градусов</p>'.encode('utf-8')
+            out += f'<p>В городе <b>{item["city"]}</b> температура воздуха составляет <b>{item["temp"]}</b> градусов</p>'.encode('utf-8')
         #for city in cities:
             #response = asyncio.run(get_weather_async(city))
             #print(response)
             #out += f'<p>В городе <b>{response['city']}</b> температура воздуха составляет <b>{response['temp']}</b> градусов</p>'.encode('utf-8')
-        with open('weather/index.html', 'rb') as f:
-            data = f.read()
+        with open('weather/index.html', 'rb') as file:
+            data = file.read()
             data += bytes(out)
         return data
     else:
@@ -36,7 +36,7 @@ def weather():
         print(response)
         with open('weather/index.html', 'rb') as f:
             data = f.read()
-            out = f'<p>В городе <b>{response['city']}</b> температура воздуха составляет <b>{response['temp']}</b> градусов</p>'.encode('utf-8')
+            out = f'<p>В городе <b>{response["city"]}</b> температура воздуха составляет <b>{response["temp"]}</b> градусов</p>'.encode('utf-8')
             data += bytes(out)
         return data
 
