@@ -1,15 +1,24 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from datetime import datetime
 import asyncio
+import os
+import random
+import string
 from weather.weather import get_weather, get_weather_async
 
-app = Flask(__name__)
+BASE_DIR = os.getcwd()
 
+app = Flask(__name__, static_folder=os.path.join(BASE_DIR, "static"),
+            template_folder=os.path.join(BASE_DIR, "templates")
+            )
+sec_key = "".join(random.sample(string.ascii_letters,20))
+print(sec_key)
+app.config['SECRET_KEY'] = sec_key
 
 @app.route('/')
 def index():
-    with open('static/index.html', 'rb') as f:
-        return f.read()
+    cities = ['minsk', 'brest', 'grodno', 'vitebsk', 'gomel']   
+    return render_template('weathers.html',head="Города", cities=cities)
 
 
 @app.route('/weather')

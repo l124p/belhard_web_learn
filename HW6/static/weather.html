@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="ru">
 <head>
-	<meta charset="utf-8">
-	<title>Lesson 1</title>
-	<link rel="shortcut icon" href="{{ url_for('static', filename='HW3/favicon.ico') }}">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='static/favicon.ico') }}">
 </head>
 <body>
 <h1><a href="/">Главная</a></h1>
@@ -17,6 +18,7 @@
 			<li><a href="/weather?city=vitebsk"><img src="HW3/resurses/images/weather.png" class="image" alt="Витебск"></a></li>
 			<li><a href="/weather?city=Все города"><img src="HW3/resurses/images/weather.png" class="image" alt="Все города"></a></li>
 		</ul>
+		</div>
 		<div class="copyright clear">© 2024 Weather Inc.</div>
 		<div>
 			<a href="/weather"></a>
