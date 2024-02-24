@@ -17,37 +17,30 @@ app.config['SECRET_KEY'] = sec_key
 
 @app.route('/')
 def index():
-    cities = ['minsk', 'brest', 'grodno', 'vitebsk', 'gomel']   
-    return render_template('weathers.html',head="Города", cities=cities)
+    with open('static/index.html', 'rb') as f:
+        data = f.read()  
+    return data
 
 
 @app.route('/weather')
 def weather():
-    cities = ['minsk', 'brest', 'grodno', 'vitebsk', 'gomel']
-    city = request.args.get('city', 'minsk')
-    out = ''.encode('utf-8')
-    if city == 'Все города':
+    cities = ['Minsk', 'Brest', 'Grodno', 'Vitebsk', 'Gomel']
+    city = request.args.get('city')
+    if not city:
+        with open():
+    
+    data = {}
+    if city == 'all':
         response = asyncio.run(get_weather_async(cities))
         for item in response:
-            out += f'<p>В городе <b>{item["city"]}</b> температура воздуха составляет <b>{item["temp"]}</b> градусов</p>'.encode('utf-8')
-        #for city in cities:
-            #response = asyncio.run(get_weather_async(city))
-            #print(response)
-            #out += f'<p>В городе <b>{response['city']}</b> температура воздуха составляет <b>{response['temp']}</b> градусов</p>'.encode('utf-8')
-        with open('static/weather.html', 'rb') as file:
-            data = file.read()
-            data += bytes(out)
-        return data
+            data['city'] = {'temperatura': item['temp']}
+        return render_template('weather.html', cities=cities, data=data)
     else:
         response = get_weather(city)
         cur_date = datetime.now().strftime('%d.%m.%y')
         print(cur_date)
         print(response)
-        with open('static/weather.html', 'rb') as f:
-            data = f.read()
-            out = f'<p>В городе <b>{response["city"]}</b> температура воздуха составляет <b>{response["temp"]}</b> градусов</p>'.encode('utf-8')
-            data += bytes(out)
-        return data
+        return render_template('weather.html', city=city, temperatura=response["temp"])
 
 
 @app.route('/news')

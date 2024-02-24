@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if cities%}
+        <h1>Все города</h1>
+        {% for city in cities %}
+            <p>В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ data['city']['temperatura'] }}</b> градусов</p></p>
+         {% endfor %}
+    {% else %}          
+        <h1>Город {{ city }}</h1>
+        <p>В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ temperatura }}</b> градусов</p>'
+    {% endif %}
+    </body>
+</html>
