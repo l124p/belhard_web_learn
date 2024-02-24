@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    with open('index.html', 'rb') as f:
+    with open('static/index.html', 'rb') as f:
         return f.read()
 
 
@@ -25,7 +25,7 @@ def weather():
             #response = asyncio.run(get_weather_async(city))
             #print(response)
             #out += f'<p>В городе <b>{response['city']}</b> температура воздуха составляет <b>{response['temp']}</b> градусов</p>'.encode('utf-8')
-        with open('weather/index.html', 'rb') as file:
+        with open('static/weather.html', 'rb') as file:
             data = file.read()
             data += bytes(out)
         return data
@@ -34,7 +34,7 @@ def weather():
         cur_date = datetime.now().strftime('%d.%m.%y')
         print(cur_date)
         print(response)
-        with open('weather/index.html', 'rb') as f:
+        with open('static/weather.html', 'rb') as f:
             data = f.read()
             out = f'<p>В городе <b>{response["city"]}</b> температура воздуха составляет <b>{response["temp"]}</b> градусов</p>'.encode('utf-8')
             data += bytes(out)
