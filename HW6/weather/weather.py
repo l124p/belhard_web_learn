@@ -11,7 +11,7 @@ def get_weather(city):
     params = {'q': city, 'appid': apikey, 'units': 'metric'}
     rez = requests.get(url, params)
     if rez.status_code == 200:
-        return {'city': city, 'temp': rez.json()['main']['temp']}
+        return {'city': city, 'temp': rez.json()['main']['temp'], 'humidity': rez.json()['main']['humidity'], 'wind_speed':rez.json()['wind']['speed']}
     return 'Error get data'
 
 
@@ -21,7 +21,7 @@ async def task_get_weather_async(city):
         params = {'q': city, 'appid': apikey, 'units': 'metric'}
         async with sesion.get(url=url, params=params) as respons:
             rez = await respons.json()
-            return {'city': city, 'temp': rez['main']['temp']}
+            return {'city': city, 'temp': rez['main']['temp'], 'humidity': rez['main']['humidity'], 'wind_speed':rez['wind']['speed']}
 
 
 async def get_weather_async(cities_):

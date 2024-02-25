@@ -2,5 +2,38 @@ p {
         font-style: italic;
     }
 b {
-  color: blue;
+  color:cadetblue;
 }    
+
+.bblock{
+
+  float: left; /*Задаем обтекание*/ 
+  /*line-height: 10px;/*Высота строки + верт. центрирования текста*/ 
+  font-size: 16px; 
+  /*background: dodgerblue; */
+  color: rgb(0, 0, 0); 
+  width: 600px; /*Фиксируем ширину блока*/ 
+  margin-right: 10px; 
+  text-align: left; /*Центрируем текст по горизонтали*/
+}
+
+.ablock{
+  line-height: 50px;/*Высота строки + верт. центрирования текста*/ 
+  font-size: 40px; 
+  color: white; 
+  width: 600px; /*Фиксируем ширину блока*/ 
+  margin-top: 160px;
+  margin-right: 20px; 
+  text-align: right; /*Центрируем текст по горизонтали*/
+}
+
+ul.hr {
+  margin: 0; /* Обнуляем значение отступов */
+  padding: 4px; /* Значение полей */
+ }
+ ul.hr li {
+  display: inline; /* Отображать как строчный элемент */
+  margin-right: 5px; /* Отступ слева */
+  /*border: 1px solid #000; /* Рамка вокруг текста */
+  padding: 3px; /* Поля вокруг текста */
+ }

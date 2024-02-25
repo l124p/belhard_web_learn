@@ -26,16 +26,13 @@ def index():
 def weather():
     cities = ['Minsk', 'Brest', 'Grodno', 'Vitebsk', 'Gomel']
     city = request.args.get('city')
-    if not city:
-        with open('static/weather.html', 'rb') as f:
-            data =f.read()
-        return data
-    elif city == 'all':
+    if city == 'all' or city == None:
         data = {}
         response = asyncio.run(get_weather_async(cities))
         for item in response:
             print(item)
             data[item['city']] = {'temperatura': item['temp']}
+            data[item['city']] = {'humidity': item['humidity']}
         print(data)    
         return render_template('weather.html  ', cities=cities, data=data)
     elif city.title() in cities:
@@ -43,7 +40,7 @@ def weather():
         cur_date = datetime.now().strftime('%d.%m.%y')
         print(cur_date)
         print(response)
-        return render_template('weather.html', city=city, temperatura=response["temp"])
+        return render_template('weather.html', city=city, temperatura=response["temp"], humidity=response["humidity"], wind_speed=response["wind_speed"])
     else:
         with open('static/weather.html', 'rb') as f:
             data =f.read()
@@ -59,6 +56,13 @@ def news():
 
     color = request.args.get('color') if request.args.get('color') in colors else 'black'
     return f'<h1 style="color: {color}"> News: {limit}<h1>'
+
+@app.route('/homework')
+def homework():
+    with open('static/homework/index.html', 'rb') as f:
+        data =f.read()
+    return data
+
 
 
 if __name__ == '__main__':
