@@ -27,21 +27,27 @@ def weather():
     cities = ['Minsk', 'Brest', 'Grodno', 'Vitebsk', 'Gomel']
     city = request.args.get('city')
     if not city:
-        with open():
-    
-    data = {}
-    if city == 'all':
+        with open('static/weather.html', 'rb') as f:
+            data =f.read()
+        return data
+    elif city == 'all':
+        data = {}
         response = asyncio.run(get_weather_async(cities))
         for item in response:
-            data['city'] = {'temperatura': item['temp']}
-        return render_template('weather.html', cities=cities, data=data)
-    else:
+            print(item)
+            data[item['city']] = {'temperatura': item['temp']}
+        print(data)    
+        return render_template('weather.html  ', cities=cities, data=data)
+    elif city.title() in cities:
         response = get_weather(city)
         cur_date = datetime.now().strftime('%d.%m.%y')
         print(cur_date)
         print(response)
         return render_template('weather.html', city=city, temperatura=response["temp"])
-
+    else:
+        with open('static/weather.html', 'rb') as f:
+            data =f.read()
+        return data
 
 @app.route('/news')
 def news():

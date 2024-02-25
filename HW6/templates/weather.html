@@ -3,17 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Погода в Беларуси</title>
+    <link rel="shortcut icon" href="static\icons\icon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <meta name="description" content="weather">
+    <meta name="keywords" content="belarus, minsk, brest, vitebsk">
+    <meta name="author" content="">
 </head>
 <body>
+    <nav></nav>
+    <div>
     {% if cities%}
         <h1>Все города</h1>
         {% for city in cities %}
-            <p>В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ data['city']['temperatura'] }}</b> градусов</p></p>
+            <p  style="font-style: italic; font-size: xx-large; color: brown;">В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ data[city]['temperatura'] }}</b> градусов</p></p>
          {% endfor %}
     {% else %}          
         <h1>Город {{ city }}</h1>
-        <p>В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ temperatura }}</b> градусов</p>'
+        <div style="background: url(static/images/{{ city }}.jpg); 
+                    background-repeat:no-repeat;
+                    height:800px;
+                    "
+        >
+            <div style="text-align: left">
+                <p>В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ temperatura }}</b> градусов</p>'
+            </div>    
+        </div>
     {% endif %}
-    </body>
+    </div>
+    </body>    
 </html>
