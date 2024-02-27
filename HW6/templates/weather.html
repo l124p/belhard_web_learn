@@ -43,7 +43,7 @@
             В засушливые годы выпадает всего около 300 мм, а в наиболее влажные — свыше 1100 мм. 
         </div>
         {% for city in cities %}
-            <p  style="font-style: italic; font-size: xx-large; color: rgb(90, 54, 54);">В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ data[city]['temperatura'] }}</b> градусов</p></p>
+            <p  style="font-style: italic; font-size: x-large; color: rgb(90, 54, 54);">В городе <b>{{ city }}</b> температура воздуха составляет <b>{{ data[city]['temperatura'] }}</b> градусов</p></p>
          {% endfor %}
     {% else %}          
         <h1>{% if city == 'minsk' %} Город Минск
