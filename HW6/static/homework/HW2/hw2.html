@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            /*border: 1px solid black;*/
+            /*width: 500px; */
+           /* margin-top: 15%;*/
+        }
+ 
+        input[type="submit"]{
+            background-color: rgb(227, 227, 227);
+            width: fit-content;
+            padding: 6px 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_conrainer">
+        <form action="/form_date/" method="post" enctype="multipart/form-data">
+            <p>
+                <label for="week">Неделя: </label>
+                <input type="week" name="week" id="week" />
+            </p>
+            <p>
+                <label for="localdate">Дата и время: </label>
+                <input type="datetime-local" min="01-01-2022 1:00" max="01-01-2022 5:00" id="localdate" name="date"/>
+            </p>
+            <p>
+                <label for="month">Месяц: </label>
+                <input type="month" id="month" name="month"/>
+            </p>
+            <p>
+                <label for="time">Время: </label>
+                <input type="time" value="1:00" id="time" name="time"/>
+            </p>
+        <input type="submit" value="Отправить">
+        </form>
+    </div>
+</body>
+</html>

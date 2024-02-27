@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            /*border: 1px solid black;*/
+            /*width: 500px; */
+           /* margin-top: 15%;*/
+        }
+        fieldset{
+        width: 600px;
+        }
+
+        td:nth-of-type(even), select, input {
+             /*border: 2px solid orange;*/
+             background-color: white;
+             width: 300px;
+        }
+        textarea{
+            width: 300px;
+            height: 80px;
+        }
+        td:nth-of-type(odd) {
+             /*border: 2px solid red;*/
+             width: 100px;
+        }
+        input[type="checkbox"]{
+           width: 12px;
+        }
+        #td1{
+            width: 140px;
+            /*border: 2px solid blue;*/
+
+        }
+        input[type="submit"]{
+            background-color: rgb(227, 227, 227);
+            width: fit-content;
+            padding: 6px 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_conrainer">
+        <h1>Форма заявки на работу в зоопарке</h1>
+        <p style="font-style: italic;">Пожалуйста заполните форму. Обязательные поля помечены <span style="color: red;">*</span></p>
+        <form action="/form_zoo/" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <table>
+                <tr><td>Имя <span style="color: red;">*</span></td><td><input type="text" name="name"></td></tr>
+                <tr><td>Телефон</td><td><input type="phone" name="phone"></td></tr>
+                <tr><td>Email <span style="color: red;">*</span></td><td><input type="email" name="email"></td></tr>
+            </table>        
+        </fieldset>
+         <br>
+        <fieldset>
+            <legend>Персональная информация</legend>
+        <table>
+            <tr><td>Возраст <span style="color: red;">*</span></td><td><input type="text"></td></tr>
+            <tr>
+                <td>Пол</td>
+                <td>
+                    <select name="gender_select">
+                        <option  value="women">Женщина</option>
+                        <option  value="man">Мужчина</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td>Перечислите личные качества</td><td><textarea name="personal_skill"></textarea></td></tr>
+        </table>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Выберите ваших любимых животных</legend>
+            <table>
+                <tr>
+                    <td id="td1"><input type="checkbox" name="option1" value="Зебра">Зебра</td>
+                    <td id="td1"><input type="checkbox" name="option2" value="Кошак">Кошак</td>
+                    <td id="td1"><input type="checkbox" name="option3" value="Анаконда">Анаконда</td>
+                    <td id="td1"><input type="checkbox" name="option4" value="Человек">Человек</td>
+                </tr>
+                <tr>
+                    <td id="td1"><input type="checkbox" name="option5" value="Слон">Слон</td>
+                    <td id="td1"><input type="checkbox" name="option6" value="Антилопа">Антилопа</td>
+                    <td id="td1"><input type="checkbox" name="option7" value="Голубь">Голубь</td> 
+                    <td id="td1"><input type="checkbox" name="option8" value="Краб">Краб</td>
+                </tr>
+            </table>
+        </fieldset>
+        <br>
+        <input type="submit" value="Отправить информацию">
+        </form>
+    </div>
+</body>
+</html>
