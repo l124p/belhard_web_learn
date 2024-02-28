@@ -14,6 +14,8 @@ app = Flask(__name__, static_folder=os.path.join(BASE_DIR, "static"),
 sec_key = "".join(random.sample(string.ascii_letters,20))
 print(sec_key)
 app.config['SECRET_KEY'] = sec_key
+count_like = 0
+
 
 @app.route('/')
 def index():
@@ -73,6 +75,22 @@ def homework():
     return data
 
 
+@app.route('/like', methods = ['GET', 'POST'])
+def like_sum():
+    print(request.method)
+    global count_like
+    if request.method == 'POST':
+        print('количество:', request.form['count_like'])
+        count_like += int(request.form['count_like'])       
+    return render_template('HW2/hw3.html', count_like=count_like)
+
+@app.route('/form_zoo/', methods = ['GET', 'POST'])
+def get_zoo():   
+    return f'Данные отправлены'
+
+@app.route('/form_date//', methods = ['GET', 'POST'])
+def get_date():   
+    return f'Данные отправлены'
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <nav>
+		<button type="button"><a href="/">Главная</a></button>
+	</nav>
+    <div class="form_conrainer">
+        <form action="/like" method="post" enctype="multipart/form-data">
+                <input type="hidden"  name="count_like" value="1">
+                <input type="image" alt="Like" src="static/images/like.jpg"/>              
+        </form>
+    </div>
+    <p>Лайков:
+        {% if count_like %} 
+            {{ count_like }}   
+        {% else %}          
+            0
+        {% endif %}      
+        
+    </p>
+</body>
+</html>
