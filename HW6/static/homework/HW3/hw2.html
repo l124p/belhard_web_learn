@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightcyan;
+        }
+        .left-menu-conteiner{
+            position: absolute;
+            top:0;
+        }
+        .left-menu{
+            display: none;
+            position: absolute;
+            padding: 4px;
+            left: 30px;
+            top: 0;
+            list-style: none;
+        }
+        .left-menu:hover >li{
+            display: block;
+            position: absolute;
+            padding: 4px;
+            left: 30px;
+            top: 0;
+            list-style: none;
+        }
+        nav > ul{
+            list-style: none;
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+        nav > ul > li{
+            display: inline-block;
+            padding: 8px 16px;
+            width: auto;
+            background-color: rgb(186, 204, 154);
+            text-align: center;
+        }
+        nav > ul > li:hover{
+            background-color:rgb(189, 160, 87);
+        }
+        nav > ul > li > ol{
+            list-style: none;
+            display: none;
+            position:absolute;
+            padding: 0;
+        }
+        nav > ul > li:hover > ol{
+            display: block;
+        }
+        nav > ul > li > ol > li{
+            padding: 6px;
+            color: rgb(91, 92, 110);
+            background-color: rgb(177, 178, 214);
+        }
+        nav > ul > li > ol > li:hover{
+            left: -10px;
+            transform: scale(1.05);
+            margin-left: 10px;
+            color: rgb(91, 92, 110);
+            background-color: rgb(47, 49, 148);
+        }
+        .cl-container {
+            background-color: rgb(228, 218, 186);
+            margin: auto;
+            width: 90vw;
+        }
+        .cl{
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            background-color: rgb(164, 149, 179);
+            border: 1px solid gray;
+            margin: 10px; 
+            text-align: center;
+            font-size: 25px;
+            line-height: 150px;
+            transition: all 600ms;
+        }
+        .cl:hover{
+            background-color: antiquewhite;
+            box-shadow: 5px 5px 5px gray;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>menu1
+                <ol>
+                    <li>submenu10</li>
+                    <li>submenu11</li>
+                    <li>submenu12</li>
+                </ol>
+            </li>
+            <li>menu2
+                <ol>
+                    <li>submenu20</li>
+                    <li>submenu21</li>
+                    <li>submenu22</li>
+                </ol>
+            </li>
+            <li>menu3
+                <ol>
+                    <li>submenu30</li>
+                    <li>submenu31</li>
+                    <li>submenu32</li>
+                </ol>
+            </li>
+            <li>menu4
+                <ol>
+                    <li>submenu40</li>
+                    <li>submenu41</li>
+                    <li>submenu42</li>
+                </ol>
+            </li>
+            <li>menu5
+                <ol>
+                    <li>submenu50</li>
+                    <li>submenu51</li>
+                    <li>submenu52</li>
+                </ol>
+            </li>
+        </ul>
+    </nav>
+    <div class="left-menu-conteiner"><a href="#left-menu" >d</a>
+    <ul id="left-menu" class="left-menu">
+        <li>меню01</li>
+        <li>меню02</li>
+        <li>меню03</li>
+        <li>меню04</li>
+        <li>меню05</li>
+        <li>меню06</li>
+        <li>меню07</li>
+        <li>меню08</li>
+        <li>меню09</li>
+        <li>меню10</li>
+        <li>меню11</li>
+        <li>меню12</li>
+        <li>меню13</li>
+        <li>меню14</li>
+        <li>меню15</li>
+    </ul>
+    </div>
+    <div class="cl-container">
+        <div class="cl">
+            001
+        </div>
+        <div class="cl">
+            002
+        </div>
+        <div class="cl">
+            003
+        </div>
+        <div class="cl">
+            004
+        </div>
+        <div class="cl">
+            005
+        </div>
+        <div class="cl">
+            006
+        </div>
+        <div class="cl">
+            007
+        </div>
+        <div class="cl">
+            008
+        </div>
+    </div>
+</body>
+</html>

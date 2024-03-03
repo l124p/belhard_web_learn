@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="static/style.css"> -->
+<style>
+header{
+    background-color: rgb(182, 135, 227);
+    height: 120px;
+    width: 90%;
+    border:  dashed 1px;   
+    
+}
+nav{
+    background-color: khaki;
+    width: 95%;
+    height: 20%;
+    margin: 20px 20px;
+    border:  dashed 1px;
+}
+aside{
+    background: linear-gradient(to right, rgb(237, 240, 93), rgb(212, 112, 128));
+    border:  dashed 1px;
+    display:inline-block;
+    vertical-align: top;
+    width:10%;
+    height: 600px;
+}
+main{
+    white-space-collapse:collapse;
+    border-collapse: collapse;
+    background-color: aquamarine;
+    border:  dashed 1px;
+    height: 600px;
+    width: 80%;
+    display:inline-block;
+}
+
+main > section:first-child{
+    margin-top: 80px;
+
+}
+section{
+    background-color: rgb(144, 137, 191);
+    border:  dashed 1px;
+    margin: 20px;
+}
+
+section > article:first-child{
+    margin-top: 20px;
+}
+
+article{
+    background-color: forestgreen;
+    border:  dashed 1px;
+    margin: 10px;
+}
+footer{
+    background-color: brown;
+    height: 120px;
+    width: 90%;
+    border:  dashed 1px;
+}
+
+</style>
+
+</head>
+<body>
+    <header>HEADER
+        <nav>NAVIGATION</nav>
+    </header>
+    <main>MAIN
+        <section>SECTION
+            <article>ARTICLE 1</article>
+            <article>ARTICLE 2</article>
+            <article>ARTICLE 3</article>
+        </section>
+        <section>SECTION
+            <article>ARTICLE 4</article>
+        </section>
+    </main><!--
+  --><aside>
+        ASIDE
+    </aside><!--
+ --><footer>FOTTER
+    </footer>
+</body>
+</html>

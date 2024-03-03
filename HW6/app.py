@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from datetime import datetime
 import asyncio
 import os
@@ -91,9 +91,14 @@ def like_sum():
 def get_zoo():   
     return f'Данные отправлены'
 
-@app.route('/form_date//', methods = ['GET', 'POST'])
+@app.route('/form_date/', methods = ['GET', 'POST'])
 def get_date():   
     return f'Данные отправлены'
+
+@app.route('/modal/', methods = ['POST'])
+def get_modal():
+    print("Данные сохранены")   
+    return redirect('/static/homework/HW3/hw3.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
