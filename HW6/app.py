@@ -81,7 +81,10 @@ def like_sum():
     global count_like
     if request.method == 'POST':
         print('количество:', request.form['count_like'])
-        count_like += int(request.form['count_like'])       
+        count_like += int(request.form['count_like']) 
+    # if request.method == 'POST' and request.form['image.x']:
+    #     print(request.form)
+    #     count_like += 1
     return render_template('HW2/hw3.html', count_like=count_like)
 
 @app.route('/form_zoo/', methods = ['GET', 'POST'])
