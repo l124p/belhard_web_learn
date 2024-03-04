@@ -6,39 +6,56 @@
     <title>Document</title>
     <style>
         body{
-            background-color: lightcyan;
+            background-color: rgb(243, 253, 253);
         }
         .left-menu-conteiner{
+            display: inline-block;
+            padding: 2px;
+            list-style: none;
+            border: 1px solid black;
             position: absolute;
-            top:0;
         }
         .left-menu{
             display: none;
-            position: absolute;
+        }
+       
+        .left-menu-conteiner li:hover > ol{
+            background-color: rgb(186, 204, 154);
+            display: inline-block;      
             padding: 4px;
-            left: 30px;
-            top: 0;
             list-style: none;
         }
-        .left-menu:hover >li{
-            display: block;
-            position: absolute;
+
+        .left-menu-conteiner li > ol > li:hover {
+            background-color: rgb(164, 204, 95);
+            border: 2px solid blue;     
             padding: 4px;
-            left: 30px;
-            top: 0;
             list-style: none;
+        }
+        ul > li > ol.left-menu{
+            list-style: none;
+            display: none;
+            position:absolute;
+            padding: 4px;
+            left: 12px;
         }
         nav > ul{
+            width: 90vw;
+            margin: auto 10;
+            text-align: center;
             list-style: none;
             padding-left: 80px;
             padding-right: 80px;
+            
         }
+        
         nav > ul > li{
             display: inline-block;
             padding: 8px 16px;
-            width: auto;
+
             background-color: rgb(186, 204, 154);
             text-align: center;
+
         }
         nav > ul > li:hover{
             background-color:rgb(189, 160, 87);
@@ -71,14 +88,14 @@
         }
         .cl{
             display: inline-block;
-            width: 150px;
-            height: 150px;
+            width: 300px;
+            height: 300px;
             background-color: rgb(164, 149, 179);
             border: 1px solid gray;
             margin: 10px; 
             text-align: center;
             font-size: 25px;
-            line-height: 150px;
+            line-height: 300px;
             transition: all 600ms;
         }
         .cl:hover{
@@ -89,6 +106,27 @@
     </style>
 </head>
 <body>
+    <ul class="left-menu-conteiner">
+        <li><img src="static/menu.png">
+            <ol class="left-menu">
+                <li>меню01</li>
+                <li>меню02</li>
+                <li>меню03</li>
+                <li>меню04</li>
+                <li>меню05</li>
+                <li>меню06</li>
+                <li>меню07</li>
+                <li>меню08</li>
+                <li>меню09</li>
+                <li>меню10</li>
+                <li>меню11</li>
+                <li>меню12</li>
+                <li>меню13</li>
+                <li>меню14</li>
+                <li>меню15</li>
+            </ol>
+        </li>
+    </ul>
     <nav>
         <ul>
             <li>menu1
@@ -128,25 +166,6 @@
             </li>
         </ul>
     </nav>
-    <div class="left-menu-conteiner"><a href="#left-menu" >d</a>
-    <ul id="left-menu" class="left-menu">
-        <li>меню01</li>
-        <li>меню02</li>
-        <li>меню03</li>
-        <li>меню04</li>
-        <li>меню05</li>
-        <li>меню06</li>
-        <li>меню07</li>
-        <li>меню08</li>
-        <li>меню09</li>
-        <li>меню10</li>
-        <li>меню11</li>
-        <li>меню12</li>
-        <li>меню13</li>
-        <li>меню14</li>
-        <li>меню15</li>
-    </ul>
-    </div>
     <div class="cl-container">
         <div class="cl">
             001
