@@ -1,0 +1,13 @@
+<div class="quiz">
+    <h2>{{question.question}}</h2>
+    <form action="/question">
+        <label for="ans1"></label>
+        {% for answer in answers %}
+        <div class="answer_row">
+        <input type="radio" name="ans_text" id ="radio{{ loop.index }}, value="{{ answers }}">
+        <label for="radio{{ loop.index }}">{{answer}}</label>
+        </div>
+        {% endfor %}  
+        <input type="submit" value="Ответить">
+    </form>
+</div>
