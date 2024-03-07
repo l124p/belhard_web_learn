@@ -1,0 +1,107 @@
+<style>
+            #WindowModal:target {
+            display:block;
+        }
+
+        .close
+        {
+            position: absolute;
+            right: 4px;
+            top:0;
+            font-size: smaller;    
+        }
+
+        .modal {
+            display:none;
+            background-color: antiquewhite;
+            position: fixed;
+            left: 140px;
+            top: 100px;   
+            text-align: center; 
+            border-radius: 10px;
+        }
+        .modal-title{
+            text-align: center;
+            background-color: rgb(240, 200, 147);
+        }
+        .form_conrainer{
+            width: 400px;
+        }
+        input{
+            margin: 4px;
+            width: 80%;
+        }
+        fieldset{
+            margin: 6px;
+            border: 2px solid gray;
+        }
+
+
+    .wrapper{
+        width: 80%;
+    }
+    .row{
+        display: grid;
+        grid-template-columns: 4fr repeat(4, 1fr) 40px 35px;
+    }
+    .wrapper div{
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+    button{
+        height: 100%;
+    }
+</style>
+
+<h2>Вопросы</h2>
+<div class="wrapper">
+    <div class="row hrow">
+        <div>Quiz ID</div>
+        <div>Quiz Name</div>
+        <div>User ID</div>
+        <div>User name</div>
+        <div></div>
+        <div></div>        
+    </div>
+    {%for quiz in quizes %}
+        <div class="row">            
+                <div>{{quiz.id}}</div>
+                <div>{{quiz.name}}</div>
+                <div>{{quiz.user_id}}</div>
+                {% for user in users%}
+                    {% if user.id == quiz.user_id%}    
+                    <div> {{ user.name }}</div>
+                    {% endif %}
+                {% endfor%}
+                <div><a href="#WindowModal"><button>Ред</button></a></div>
+                <div><button>Уд</button></div>
+
+        </div>
+    {% endfor %}
+</div>
+
+<a href="#WindowModal">Открыть модальное окно</a>
+
+<!-- Модальное окно-->
+<div id="WindowModal" class="modal" aria-hidden="true">
+    <div class="modal-header">
+        <p><a href="" title="Close" class="close">x</a></p>
+        <p class="modal-title">Заголовок модального окна</p>
+    </div>
+    <div class="modal-body">    
+        Quiz
+        <fieldset>
+            <legend  align="center">forma111</legend>
+            <div class="form_conrainer">
+                <form action="/modal" method="post" enctype="multipart/form-data">
+                        <input type="text"  name="Quiz ID" value="1">
+                        <input type="text"  name="Quiz name" value="1">
+                        <input type="text"  name="text_3" value="1">
+                        <input type="text"  name="text_4" value="1">
+                        <input type="text"  name="text_5" value="1">  
+                        <input type="submit" value="Отправить">           
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>

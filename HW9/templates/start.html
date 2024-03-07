@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<style>
     
+   
+    
+    
+</style>
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="start_form quiz_form">
     <form action="/" method="post">
-        <h2>Выберите викторину</h2>
-        <div>
-        <select name="quiz">
-            {% for q in quizes%}
-               <option value="{{q.id}}"> {{q.name}} </option> 
+        <div class="form1">
+            <h2>Выберите КВИЗ</h2>
+            
+            <select name="quiz" >
+                {% for q in quizes %}
+                    <option value="{{ q.id }}"> {{ q.name }}</option>
 
-            {% endfor%}
-        </select> 
-        <div>
-            <input type="submit" value="Начать Quiz">
+                {% endfor%}
+
+            </select>
+            <div>
+                <input class="button" type="submit" value ='Начать КВИЗ'>
+            </div>
         </div>
-        </div>
+
     </form>
-
-
-</body>
-</html>
+</div>
+{% endblock %}

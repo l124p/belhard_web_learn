@@ -1,13 +1,30 @@
-<div class="quiz">
+<style>
+
+</style>
+
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="quiz_form">
+
     <h2>{{question.question}}</h2>
-    <form action="/question">
+
+    <form action="/question/" method="post">
         <label for="ans1"></label>
-        {% for answer in answers %}
-        <div class="answer_row">
-        <input type="radio" name="ans_text" id ="radio{{ loop.index }}, value="{{ answers }}">
-        <label for="radio{{ loop.index }}">{{answer}}</label>
+        {% for answer in answers%}
+        <div class="anwer_row">
+            <input type="radio" name="ans_text" id = 'radio{{loop.index}}' value="{{answer}}">
+            <label for="radio{{ loop.index }}">{{ answer }}</label>
         </div>
-        {% endfor %}  
-        <input type="submit" value="Ответить">
+        {% endfor %}
+        <input class="button" type="submit" value="Ответить">
+
     </form>
+
+
 </div>
+
+{% endblock %}

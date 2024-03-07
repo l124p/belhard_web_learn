@@ -1,0 +1,29 @@
+<div class="start_form quiz_form">
+    <form action="/add_quiz/" method="post">
+        <div class="form1">
+            
+            <h2>New Quiz</h2>
+            <div>
+            <label for="quiz">Quiz name</label>
+            <input type="text" name="quiz">   
+            </div>
+            <div>
+            <label for="user">Users name</label>             
+            <select name="user" >
+                {% for user in users %}
+                    <option value="{{ user.id }}"> {{ user.name }}</option>
+                {% endfor%}
+            </select>
+            <div>Выберите Вопросы:</div>
+            {% for question in questions %}
+            <div>
+                <input type="checkbox" name="questions" id = "checkbox{{loop.index}}" value="{{ question.id }}" />
+                <label for="checkbox{{loop.index}}">{{ question }}</label>
+            </div>
+            {% endfor%}
+            <div>
+                <input class="button" type="submit" value='Add' />
+            </div>
+        </div>
+    </form>
+</div>
