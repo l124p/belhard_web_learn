@@ -1,4 +1,3 @@
-<h2>ВОпросы</h2>
 
 <style>
     .wrapper{
@@ -17,14 +16,18 @@
     }
 </style>
 
+{% extends "base.html" %}
+
+{% block content %}
+
 <h2>Вопросы</h2>
 <div class="wrapper">
     <div class="row hrow">
         <div>Вопроос</div>
         <div>Ответ</div>
-        <div>Подстава1</div>
-        <div>Подстава2</div>
-        <div>Подстава3</div>
+        <div>Вариант 1</div>
+        <div>Вариант 2</div>
+        <div>Вариант 3</div>
     </div>
     {%for q in questions %}
         <div class="row">            
@@ -40,3 +43,4 @@
     {% endfor %}
 
 </div>
+{% endblock %}
