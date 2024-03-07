@@ -24,32 +24,48 @@
                     <div> {{ user.name }}</div>
                     {% endif %}
                 {% endfor%}
-                <div><a href="#WindowModal"><button>Ред</button></a></div>
+                <div><a href="#edit_quiz"><button>Ред {{quiz.name}}</button></a></div>
+                <div><a href="#add_quiz"><button>New</button></a></div>
                 <div><button>Уд</button></div>
 
         </div>
     {% endfor %}
 </div>
 
-<a href="#WindowModal">Открыть модальное окно</a>
-
+<a href="#add_quiz">Add quiz</a>
 <!-- Модальное окно-->
-<div id="WindowModal" class="modal" aria-hidden="true">
+<div id="add_quiz" class="modal" aria-hidden="true">
     <div class="modal-header">
-        <p><a href="" title="Close" class="close">x</a></p>
-        <p class="modal-title">Заголовок модального окна</p>
+        <p><a href="#close" title="Close" class="close">x</a></p>
     </div>
     <div class="modal-body">    
         Quiz
         <fieldset>
-            <legend  align="center">forma111</legend>
+            <legend  align="center">Добавить КВИЗ</legend>
             <div class="form_conrainer">
                 <form action="/add_quiz" method="post" enctype="multipart/form-data">
-                        <input type="text"  name="Quiz ID" value="1">
-                        <input type="text"  name="Quiz name" value="1">
-                        <input type="text"  name="text_3" value="1">
-                        <input type="text"  name="text_4" value="1">
-                        <input type="text"  name="text_5" value="1">  
+                        <input type="text"  name="quiz_name">
+                        <input type="submit" value="Отправить">           
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<a href="#edit_quiz">Edit quiz</a>
+<!-- Модальное окно-->
+<div id="edit_quiz" class="modal" aria-hidden="true">
+    <div class="modal-header">
+        <p><a href="#close" title="Close" class="close">x</a></p>
+        <div>NAme = {{name}}</div>
+    </div>
+    <div class="modal-body">    
+        Quiz
+        <fieldset>
+            <legend  align="center">Изменить КВИЗ</legend><p>
+            <div class="form_conrainer">
+                <form action="/edit_quiz" method="post" enctype="multipart/form-data">
+                        <input type="text" name="quiz_name" value="<?=GET['name'];?>" />
                         <input type="submit" value="Отправить">           
                 </form>
             </div>

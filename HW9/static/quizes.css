@@ -1,4 +1,4 @@
-            #WindowModal:target {
+            #add_quiz:target , #edit_quiz:target {
             display:block;
         }
 

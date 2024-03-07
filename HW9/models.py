@@ -60,7 +60,7 @@ class Question(db.Model):
 
 
 def db_add_quiz(quiz_name: str):
-    quiz = Quiz(quiz_name)
+    quiz = Quiz(quiz_name, None)
     db.session.add(quiz)
     db.session.commit()
 

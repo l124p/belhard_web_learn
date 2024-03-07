@@ -115,7 +115,7 @@ def result():
 @app.route('/add_quiz/', methods = ['POST'])
 def add_quiz():
 
-    quiz = request.form.get('quiz')
+    quiz = request.form.get('quiz_name')
     print(quiz)
     with app.app_context():
         db_add_quiz(quiz)
