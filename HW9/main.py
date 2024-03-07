@@ -94,23 +94,32 @@ def result():
                     total = session['question_n'])
 
 #add
-@app.route('/add_quiz/', methods = ['POST', 'GET'])
+# @app.route('/add_quiz/', methods = ['POST', 'GET'])
+# def add_quiz():
+#     if request.method == 'GET': 
+#         print(1)
+#         users = User.query.all()
+#         questions = Question.query.all()
+#         return render_template('quiz.html', users=users, questions=questions)
+#     if request.method == 'POST': 
+#         print(2)
+#         quiz = request.form.get('quiz')
+#         user_id = int(request.form.get('user'))
+#         questions = request.form.getlist('questions')
+#         print(quiz, user_id)
+#         print("Вопросы", questions)
+#         with app.app_context():
+#             db_add_quiz(quiz, user_id, questions)
+#         return redirect(url_for('view_quizes'))
+
+@app.route('/add_quiz/', methods = ['POST'])
 def add_quiz():
-    if request.method == 'GET': 
-        print(1)
-        users = User.query.all()
-        questions = Question.query.all()
-        return render_template('quiz.html', users=users, questions=questions)
-    if request.method == 'POST': 
-        print(2)
-        quiz = request.form.get('quiz')
-        user_id = int(request.form.get('user'))
-        questions = request.form.getlist('questions')
-        print(quiz, user_id)
-        print("Вопросы", questions)
-        with app.app_context():
-            db_add_quiz(quiz, user_id, questions)
-        return redirect(url_for('view_quizes'))
+
+    quiz = request.form.get('quiz')
+    print(quiz)
+    with app.app_context():
+        db_add_quiz(quiz)
+    return redirect(url_for('view_quizes'))
 
 @app.route('/quizes/')
 def view_quizes():

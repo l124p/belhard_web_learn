@@ -59,24 +59,31 @@ class Question(db.Model):
         return f'{self.question}'
 
 
-def db_add_quiz(quiz_name: str,user_id: int, questions_id):
+def db_add_quiz(quiz_name: str):
+    quiz = Quiz(quiz_name)
+    db.session.add(quiz)
+    db.session.commit()
 
-    user = User.query.get(user_id)
-    quiz = Quiz(quiz_name,user)
-    db.session.add(quiz)
-    db.session.commit()
-    for question_id in questions_id:
-        print('Вопрос id',question_id)
-        question_id = int(question_id)
-        #question_id = Question.query.get(question_id)   
-        print('Вопрос id', question_id)
-        print('Квиз id:',quiz.id)
-        data = quiz_question.select()
-        print(data)
-        quiz_question.add_is_dependent_on(quiz.id,question_id) 
-    db.session.add(quiz)
-    #db.session.add(quiz_question)
-    db.session.commit()
+
+
+# def db_add_quiz(quiz_name: str,user_id: int, questions_id):
+
+#     user = User.query.get(user_id)
+#     quiz = Quiz(quiz_name,user)
+#     db.session.add(quiz)
+#     db.session.commit()
+#     for question_id in questions_id:
+#         print('Вопрос id',question_id)
+#         question_id = int(question_id)
+#         #question_id = Question.query.get(question_id)   
+#         print('Вопрос id', question_id)
+#         print('Квиз id:',quiz.id)
+#         data = quiz_question.select()
+#         print(data)
+#         quiz_question.add_is_dependent_on(quiz.id,question_id) 
+#     db.session.add(quiz)
+#     #db.session.add(quiz_question)
+#     db.session.commit()
 
 
 def db_add_new_data():

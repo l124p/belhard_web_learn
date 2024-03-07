@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Andry\Documents\python\Belhard_web\belhard_web_learn\HW9\venv
+set VIRTUAL_ENV=C:\Users\Andry\VscodeProject\belhard_web_learn-1\HW9\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

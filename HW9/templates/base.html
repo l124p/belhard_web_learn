@@ -6,13 +6,15 @@
     <title>Квизы</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='quizes.css') }}">
 </head>
 <body>
     
     <header >Header
         <nav><ul class="main-menu">
-            <li><a href="/quiz">Quiz</a></li>
-            <li><a href="/questions">Quiz</a></li>
+            <li><a href="/">Main</a></li>
+            <li><a href="/quizes">Quiz</a></li>
+            <li><a href="/questions">Questions</a></li>
             <li>menu3</li>
         </ul></nav> 
     </header>         
@@ -24,9 +26,7 @@
             <h2>Это базовый шаблон</h2>
         </section>
         <section class="content">   
-            Section
-            <h2>Все остальные шаблоны загружаются внутри него</h2>
-        
+            Section  
             {% block content %}
 
             {% endblock %}
