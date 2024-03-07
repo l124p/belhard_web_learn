@@ -60,11 +60,18 @@ class Question(db.Model):
 
 
 def db_add_quiz(quiz_name: str):
+    print("add_func")
     quiz = Quiz(quiz_name, None)
     db.session.add(quiz)
     db.session.commit()
 
+def db_edit_quiz(quiz_id: int, quiz_name: str):
+    print("edit_func")
+    quiz = Quiz.query.get(quiz_id)
 
+    quiz.name = quiz_name
+    db.session.add(quiz)
+    db.session.commit()
 
 # def db_add_quiz(quiz_name: str,user_id: int, questions_id):
 

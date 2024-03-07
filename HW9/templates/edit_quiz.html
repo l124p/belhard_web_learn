@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <p><a href="#close" title="Close" class="close">x</a></p>
+</div> -->
+<div class="modal-body">  
+
+<div>   
+    Quiz
+    <fieldset>
+        <legend  align="center">Добавить КВИЗ</legend>
+        <div class="form_conrainer">
+            <form action="/edit_quiz/" method="POST" enctype="multipart/form-data">
+                <div>  
+                    <input type="text" required="true" name="quiz_name" placeholder="Квиз" value="{{quiz_name}}">
+                    <input type="hidden"  name="quiz_id" value="{{quiz_id}}"> 
+                    <input type="submit" value="Отправить"> 
+                </div>     
+            </form>
+        </div>
+    </fieldset>
+</div>

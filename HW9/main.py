@@ -2,7 +2,7 @@
 
 from flask import Flask, redirect, render_template, request, session, url_for
 import os
-from models import db, Quiz, Question, db_add_new_data, db_add_quiz, User
+from models import db, Quiz, Question, db_add_new_data, db_add_quiz, db_edit_quiz, User
 from random import shuffle
 
 BASE_DIR = os.getcwd()
@@ -120,6 +120,29 @@ def add_quiz():
     with app.app_context():
         db_add_quiz(quiz)
     return redirect(url_for('view_quizes'))
+
+@app.route('/edit_quiz/', methods = ['GET', 'POST'])
+def edit_quiz():
+    if request.method == 'GET':  
+        print("GET methodos")
+        quiz_id = request.args.get('quiz_id')
+        print("КВИЗ = ", quiz_id)
+        # quiz = Quiz.query.filter_by(id = quiz_id).all()
+        #quiz = Quiz.query.filter(Quiz.id == quiz_id).all()
+        quiz = Quiz.query.get(quiz_id)
+        print("КВИЗ all = ", quiz)
+        print(quiz.id, quiz.name)
+        return render_template('edit_quiz.html', quiz_id = quiz.id, quiz_name = quiz.name)
+    if request.method == 'POST':  
+        try:
+            quiz_id = request.form.get('quiz_id')
+        except:
+            return redirect(url_for('view_quizes'))    
+        quiz_name = request.form.get('quiz_name')
+        with app.app_context():
+            db_edit_quiz(quiz_id, quiz_name)
+        return redirect(url_for('view_quizes'))
+
 
 @app.route('/quizes/')
 def view_quizes():

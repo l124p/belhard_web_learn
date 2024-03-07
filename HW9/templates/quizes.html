@@ -19,15 +19,13 @@
                 <div>{{quiz.id}}</div>
                 <div>{{quiz.name}}</div>
                 <div>{{quiz.user_id}}</div>
-                {% for user in users%}
-                    {% if user.id == quiz.user_id%}    
-                    <div> {{ user.name }}</div>
-                    {% endif %}
-                {% endfor%}
-                <div><a href="#edit_quiz"><button>Ред {{quiz.name}}</button></a></div>
+                <!-- <form action="/edit_quiz/"> -->
+                <form method="GET" action="/edit_quiz/">
+                    <input type="submit" name="quiz_id" value={{quiz.id}} />
+                </form>
+                
                 <div><a href="#add_quiz"><button>New</button></a></div>
                 <div><button>Уд</button></div>
-
         </div>
     {% endfor %}
 </div>
@@ -45,27 +43,6 @@
             <div class="form_conrainer">
                 <form action="/add_quiz" method="post" enctype="multipart/form-data">
                         <input type="text"  name="quiz_name">
-                        <input type="submit" value="Отправить">           
-                </form>
-            </div>
-        </fieldset>
-    </div>
-</div>
-
-<a href="#edit_quiz">Edit quiz</a>
-<!-- Модальное окно-->
-<div id="edit_quiz" class="modal" aria-hidden="true">
-    <div class="modal-header">
-        <p><a href="#close" title="Close" class="close">x</a></p>
-        <div>NAme = {{name}}</div>
-    </div>
-    <div class="modal-body">    
-        Quiz
-        <fieldset>
-            <legend  align="center">Изменить КВИЗ</legend><p>
-            <div class="form_conrainer">
-                <form action="/edit_quiz" method="post" enctype="multipart/form-data">
-                        <input type="text" name="quiz_name" value="<?=GET['name'];?>" />
                         <input type="submit" value="Отправить">           
                 </form>
             </div>
