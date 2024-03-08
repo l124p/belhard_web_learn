@@ -61,25 +61,25 @@ def db_add_quiz(quiz_name: str):
     quiz = Quiz(quiz_name, None)
     db.session.add(quiz)
     db.session.commit()
+    
 
-def db_edit_quiz(quiz_id: int, quiz_name: str, questions_checked: list):
+def db_edit_quiz(quiz_id: int, quiz_name: str, questions_id_checked: list):
     quiz = Quiz.query.get(quiz_id)
     quiz.name = quiz_name
     questions = Question.query.all()
-    print(f'вопросы в квизе {quiz.question}',)
-    print(f'Все вопросы {questions}',)
-    for id_checked in questions_checked:
-        for question in questions:
-            print(f'quiz.question =  {quiz.question}')
-            if question.id == int(id_checked) and question not in quiz.question:
-                print(f'Дабавляем вопрос {question} c id {id_checked}',)
+    questions_checked = [ Question.query.get(int(id_checked)) for id_checked in questions_id_checked ]
+
+    for question in questions:
+        if question in questions_checked:
+            if question not in quiz.question:
+                print("Добавляем вопрос: ", question)
                 quiz.question.append(question)
-            elif question.id == int(id_checked) and question in quiz.question:
-                print("Вопрос уже включен")
             else:
-                if question in quiz.question:
-                    print(f'Удаляем вопрос {question} c id {id_checked}',)
-                    quiz.question.remove(question)  
+                print(f"Вопрос: {question} - уже присутствует")
+        elif question in quiz.question:
+            print("Удаляем вопрос:", question)
+            quiz.question.remove(question)
+
     print(quiz.question)
     db.session.add(quiz)
     db.session.commit()
@@ -89,6 +89,7 @@ def db_add_question(question_name: str, question_answer: str, question_wrong1: s
     question = Question(question_name, question_answer, question_wrong1, question_wrong2, question_wrong3)
     db.session.add(question)
     db.session.commit()
+
 
 def db_edit_question(question_id: int, question_question: str, question_answer: str, question_wrong1: str, question_wrong2: str, question_wrong3: str):
     question = Question.query.get(question_id)
@@ -100,30 +101,6 @@ def db_edit_question(question_id: int, question_question: str, question_answer: 
     question.wrong3 = question_wrong3
     db.session.add(question)
     db.session.commit()
-
-
-
-
-
-
-# def db_add_quiz(quiz_name: str,user_id: int, questions_id):
-
-#     user = User.query.get(user_id)
-#     quiz = Quiz(quiz_name,user)
-#     db.session.add(quiz)
-#     db.session.commit()
-#     for question_id in questions_id:
-#         print('Вопрос id',question_id)
-#         question_id = int(question_id)
-#         #question_id = Question.query.get(question_id)   
-#         print('Вопрос id', question_id)
-#         print('Квиз id:',quiz.id)
-#         data = quiz_question.select()
-#         print(data)
-#         quiz_question.add_is_dependent_on(quiz.id,question_id) 
-#     db.session.add(quiz)
-#     #db.session.add(quiz_question)
-#     db.session.commit()
 
 
 def db_add_new_data():

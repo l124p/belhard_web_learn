@@ -123,24 +123,6 @@ def result():
                     right=session['right_answers'], 
                     total = session['question_n'])
 
-#add
-# @app.route('/add_quiz/', methods = ['POST', 'GET'])
-# def add_quiz():
-#     if request.method == 'GET': 
-#         print(1)
-#         users = User.query.all()
-#         questions = Question.query.all()
-#         return render_template('quiz.html', users=users, questions=questions)
-#     if request.method == 'POST': 
-#         print(2)
-#         quiz = request.form.get('quiz')
-#         user_id = int(request.form.get('user'))
-#         questions = request.form.getlist('questions')
-#         print(quiz, user_id)
-#         print("Вопросы", questions)
-#         with app.app_context():
-#             db_add_quiz(quiz, user_id, questions)
-#         return redirect(url_for('view_quizes'))
 
 @app.route('/add_quiz/', methods = ['POST'])
 def add_quiz():
@@ -151,20 +133,13 @@ def add_quiz():
         db_add_quiz(quiz)
     return redirect(url_for('view_quizes'))
 
+
 @app.route('/edit_quiz/', methods = ['GET', 'POST'])
 def edit_quiz():
     if request.method == 'GET':  
-        print("GET methodos")
         quiz_id = request.args.get('quiz_id')
-        print("КВИЗ = ", quiz_id)
-        # quiz = Quiz.query.filter_by(id = quiz_id).all()
-        #quiz = Quiz.query.filter(Quiz.id == quiz_id).all()
         quiz = Quiz.query.get(quiz_id)
-        #print("КВИЗ all = ", quiz)
-        #print(quiz.id, quiz.name)
         questions = Question.query.all()
-        #print("Questions all",questions)
-        ##print("Связь=",questions[0].quiz)
         print("Связь=",quiz.question)
         return render_template('edit_quiz.html', quiz_id = quiz.id, quiz_name = quiz.name, questions=questions, quiz_question=quiz.question)
     if request.method == 'POST':  
@@ -174,7 +149,6 @@ def edit_quiz():
             return redirect(url_for('view_quizes'))    
         quiz_name = request.form.get('quiz_name')
         questions_checked = request.form.getlist('questions_checked')
-        print("Выбранные Вопросы", questions_checked)
         with app.app_context():
             db_edit_quiz(quiz_id, quiz_name, questions_checked)
         return redirect(url_for('view_quizes'))
