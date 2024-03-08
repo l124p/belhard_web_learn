@@ -1,6 +1,4 @@
-# pip install flask-sqlalhemy
-
-from typing import Any
+#from typing import Any
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -60,18 +58,53 @@ class Question(db.Model):
 
 
 def db_add_quiz(quiz_name: str):
-    print("add_func")
     quiz = Quiz(quiz_name, None)
     db.session.add(quiz)
     db.session.commit()
 
-def db_edit_quiz(quiz_id: int, quiz_name: str):
-    print("edit_func")
+def db_edit_quiz(quiz_id: int, quiz_name: str, questions_checked: list):
     quiz = Quiz.query.get(quiz_id)
-
     quiz.name = quiz_name
+    questions = Question.query.all()
+    print(f'вопросы в квизе {quiz.question}',)
+    print(f'Все вопросы {questions}',)
+    for id_checked in questions_checked:
+        for question in questions:
+            print(f'quiz.question =  {quiz.question}')
+            if question.id == int(id_checked) and question not in quiz.question:
+                print(f'Дабавляем вопрос {question} c id {id_checked}',)
+                quiz.question.append(question)
+            elif question.id == int(id_checked) and question in quiz.question:
+                print("Вопрос уже включен")
+            else:
+                if question in quiz.question:
+                    print(f'Удаляем вопрос {question} c id {id_checked}',)
+                    quiz.question.remove(question)  
+    print(quiz.question)
     db.session.add(quiz)
     db.session.commit()
+
+
+def db_add_question(question_name: str, question_answer: str, question_wrong1: str, question_wrong2: str, question_wrong3: str):
+    question = Question(question_name, question_answer, question_wrong1, question_wrong2, question_wrong3)
+    db.session.add(question)
+    db.session.commit()
+
+def db_edit_question(question_id: int, question_question: str, question_answer: str, question_wrong1: str, question_wrong2: str, question_wrong3: str):
+    question = Question.query.get(question_id)
+    print(f'question.question = {question.question}, question_question = {question_question}')
+    question.question = question_question
+    question.answer = question_answer
+    question.wrong1 = question_wrong1
+    question.wrong2 = question_wrong2
+    question.wrong3 = question_wrong3
+    db.session.add(question)
+    db.session.commit()
+
+
+
+
+
 
 # def db_add_quiz(quiz_name: str,user_id: int, questions_id):
 

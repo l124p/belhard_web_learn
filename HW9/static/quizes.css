@@ -2,6 +2,10 @@
             display:block;
         }
 
+        #add_question:target , #edit_question:target {
+            display:block;
+        }
+
         .close
         {
             position: absolute;

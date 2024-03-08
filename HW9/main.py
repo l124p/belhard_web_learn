@@ -2,7 +2,7 @@
 
 from flask import Flask, redirect, render_template, request, session, url_for
 import os
-from models import db, Quiz, Question, db_add_new_data, db_add_quiz, db_edit_quiz, User
+from models import db, Quiz, Question, User, db_add_new_data, db_add_quiz, db_edit_quiz, db_add_question, db_edit_question
 from random import shuffle
 
 BASE_DIR = os.getcwd()
@@ -82,10 +82,40 @@ def vew_questions():
     print(questions)
     return render_template('questions.html', questions = questions)
 
-@app.route('/add_question/')
+@app.route('/add_question/', methods = ['POST'])
 def add_question():
-    pass
+    question_name = request.form.get('question_name')
+    question_answer = request.form.get('question_answer')
+    question_wrong1 = request.form.get('question_wrong1')
+    question_wrong2 = request.form.get('question_wrong2')
+    question_wrong3 = request.form.get('question_wrong3')
+    print(question)
+    with app.app_context():
+        db_add_question(question_name, question_answer, question_wrong1, question_wrong2, question_wrong3)
+    return redirect(url_for('view_question'))
 
+@app.route('/edit_question/', methods = ['GET', 'POST'])
+def edit_question():
+    if request.method == 'GET':  
+        print("GET methodos")
+        question_id = request.args.get('question_id')
+        question = Question.query.get(question_id)
+        return render_template('edit_question.html', question=question)
+    if request.method == 'POST':  
+        try:
+            question_id = request.form.get('question_id')
+        except:
+            return f'Ошибка подключения к базе'    
+        
+        question_question = request.form.get('question_question')
+        question_answer = request.form.get('question_answer')
+        question_wrong1 = request.form.get('question_wrong1')
+        question_wrong2 = request.form.get('question_wrong2')
+        question_wrong3 = request.form.get('question_wrong3')
+
+        with app.app_context():
+            db_edit_question(question_id, question_question, question_answer, question_wrong1, question_wrong2, question_wrong3)
+        return redirect(url_for('view_quizes'))
 
 @app.route('/result/')
 def result():
@@ -130,17 +160,23 @@ def edit_quiz():
         # quiz = Quiz.query.filter_by(id = quiz_id).all()
         #quiz = Quiz.query.filter(Quiz.id == quiz_id).all()
         quiz = Quiz.query.get(quiz_id)
-        print("КВИЗ all = ", quiz)
-        print(quiz.id, quiz.name)
-        return render_template('edit_quiz.html', quiz_id = quiz.id, quiz_name = quiz.name)
+        #print("КВИЗ all = ", quiz)
+        #print(quiz.id, quiz.name)
+        questions = Question.query.all()
+        #print("Questions all",questions)
+        ##print("Связь=",questions[0].quiz)
+        print("Связь=",quiz.question)
+        return render_template('edit_quiz.html', quiz_id = quiz.id, quiz_name = quiz.name, questions=questions, quiz_question=quiz.question)
     if request.method == 'POST':  
         try:
             quiz_id = request.form.get('quiz_id')
         except:
             return redirect(url_for('view_quizes'))    
         quiz_name = request.form.get('quiz_name')
+        questions_checked = request.form.getlist('questions_checked')
+        print("Выбранные Вопросы", questions_checked)
         with app.app_context():
-            db_edit_quiz(quiz_id, quiz_name)
+            db_edit_quiz(quiz_id, quiz_name, questions_checked)
         return redirect(url_for('view_quizes'))
 
 
@@ -148,6 +184,8 @@ def edit_quiz():
 def view_quizes():
     quizes = Quiz.query.all()
     users = User.query.all()
+    count_questions = quizes[0].question
+    print(count_questions,sep='/n')
     print(*quizes,sep='/n')
     print(*users,sep='/n')
     return render_template('quizes.html', quizes = quizes, users=users)

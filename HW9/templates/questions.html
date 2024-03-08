@@ -1,11 +1,16 @@
 
 <style>
+    .test{
+        display: grid;
+        width: 80%;
+        text-align: center;
+    }
     .wrapper{
         width: 80%;
     }
     .row{
         display: grid;
-        grid-template-columns: 4fr repeat(4, 1fr) 40px 35px;
+        grid-template-columns: 4fr repeat(4, 1fr) 40px 35px 35px 35px;
     }
     .wrapper div{
         border: 1px solid;
@@ -21,6 +26,7 @@
 {% block content %}
 
 <h2>Вопросы</h2>
+<div class="test"><a href="#add_question"><button>New</button></a></div>
 <div class="wrapper">
     <div class="row hrow">
         <div>Вопроос</div>
@@ -38,9 +44,35 @@
                 <div>{{q.wrong3}}</div>
                 <div><button>Ред</button></div>
                 <div><button>Уд</button></div>
-
+                <form method="GET" action="/edit_question/">
+                    <input type="submit" name="question_id" value={{q.id}} />
+                </form>
         </div>
     {% endfor %}
 
 </div>
+
+<!-- Модальное окно-->
+<div id="add_question" class="modal" aria-hidden="true">
+    <div class="modal-header">
+        <p><a href="#close" title="Close" class="close">x</a></p>
+    </div>
+    <div class="modal-body">    
+        question
+        <fieldset>
+            <legend  align="center">Добавить question</legend>
+            <div class="form_conrainer">
+                <form action="/add_question/" method="post" enctype="multipart/form-data">
+                        <input type="text"  name="question_name">
+                        <input type="text"  name="question_answer">
+                        <input type="text"  name="question_wrong1">
+                        <input type="text"  name="question_wrong2">
+                        <input type="text"  name="question_wrong3">
+                        <input type="submit" value="Отправить">           
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
 {% endblock %}

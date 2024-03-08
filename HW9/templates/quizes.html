@@ -10,7 +10,7 @@
         <div>Quiz ID</div>
         <div>Quiz Name</div>
         <div>User ID</div>
-        <div>User name</div>
+        <div>Count questions</div>
         <div></div>
         <div></div>        
     </div>
@@ -19,6 +19,7 @@
                 <div>{{quiz.id}}</div>
                 <div>{{quiz.name}}</div>
                 <div>{{quiz.user_id}}</div>
+                <div>{{ quiz.question| list | length}}</div>
                 <!-- <form action="/edit_quiz/"> -->
                 <form method="GET" action="/edit_quiz/">
                     <input type="submit" name="quiz_id" value={{quiz.id}} />
