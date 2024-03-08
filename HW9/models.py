@@ -61,7 +61,12 @@ def db_add_quiz(quiz_name: str):
     quiz = Quiz(quiz_name, None)
     db.session.add(quiz)
     db.session.commit()
-    
+
+
+def db_delete_quiz(question_id: int):
+    db.session.query(Quiz).filter(Quiz.id == question_id).delete()
+    db.session.commit()    
+
 
 def db_edit_quiz(quiz_id: int, quiz_name: str, questions_id_checked: list):
     quiz = Quiz.query.get(quiz_id)
@@ -90,6 +95,9 @@ def db_add_question(question_name: str, question_answer: str, question_wrong1: s
     db.session.add(question)
     db.session.commit()
 
+def db_delete_question(question_id: int):
+    db.session.query(Question).filter(Question.id == question_id).delete()
+    db.session.commit()
 
 def db_edit_question(question_id: int, question_question: str, question_answer: str, question_wrong1: str, question_wrong2: str, question_wrong3: str):
     question = Question.query.get(question_id)

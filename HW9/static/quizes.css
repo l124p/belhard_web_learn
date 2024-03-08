@@ -1,56 +1,82 @@
-            #add_quiz:target , #edit_quiz:target {
-            display:block;
-        }
 
-        #add_question:target , #edit_question:target {
-            display:block;
-        }
+.quizes_form{
+    display: block;
+    background: linear-gradient(153deg, #e9f2f375 20%, #7531807a);
+    border-radius: 30px;   
+    border: 2px solid;  
+    box-shadow: 14px 20px 20px 4px #614d6f;        
+    text-align: center;
+    position: relative;
+    top: 50%;                            
+    left: 50%;
+    transform: translate(-50%, -80%);
+    background: linear-gradient(305deg, #e9f2f375 20%, #a371ab7a);
+    padding: 20px;
+    max-height: 60%;
+    max-width: 90%;
+    height: fit-content;
+    width: fit-content;
+    
+    overflow: auto;
 
-        .close
-        {
-            position: absolute;
-            right: 4px;
-            top:0;
-            font-size: smaller;    
-        }
-
-        .modal {
-            display:none;
-            background-color: antiquewhite;
-            position: fixed;
-            left: 140px;
-            top: 100px;   
-            text-align: center; 
-            border-radius: 10px;
-        }
-        .modal-title{
-            text-align: center;
-            background-color: rgb(240, 200, 147);
-        }
-        .form_conrainer{
-            width: 400px;
-        }
-        input{
-            margin: 4px;
-            width: 80%;
-        }
-        fieldset{
-            margin: 6px;
-            border: 2px solid gray;
-        }
+  }
 
 
-    .wrapper{
-        width: 80%;
-    }
-    .row{
-        display: grid;
-        grid-template-columns: 4fr repeat(4, 1fr) 40px 35px;
-    }
-    .wrapper div{
-        border: 1px solid;
-        border-collapse: collapse;
-    }
-    button{
-        height: 100%;
-    }
+#add_quiz:target , #edit_quiz:target {
+    display:block;
+}
+
+#add_question:target , #edit_question:target {
+    display:block;
+}
+
+.close
+{
+    position: absolute;
+    right: 4px;
+    top:0;
+    font-size: smaller;    
+}
+
+.modal {
+    display:none;
+    background-color: antiquewhite;
+    position: fixed;
+    top: 50%;                            
+    left: 50%;
+    transform: translate(-50%, -80%); 
+    text-align: center; 
+    border-radius: 10px;
+}
+.modal-title{
+    text-align: center;
+    background-color: rgb(240, 200, 147);
+}
+.form_conrainer{
+    width: 400px;
+}
+input{
+    margin: 4px;
+    width: 80%;
+}
+fieldset{
+    margin: 6px;
+    border: 2px solid gray;
+}
+
+
+.row{
+display: grid;
+grid-template-columns: 4fr repeat(4, 1fr) 40px 35px;
+}
+.wrapper div{
+border: 1px solid;
+border-collapse: collapse;
+}
+button{
+height: 100%;
+}
+
+.add_quiz{
+    text-align: center;
+}

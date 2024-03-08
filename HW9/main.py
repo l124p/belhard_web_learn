@@ -1,8 +1,8 @@
-#pip install flask-sqlalchemy
+#pip install flask-sqlalchemyview_quizesview_quizes
 
 from flask import Flask, redirect, render_template, request, session, url_for
 import os
-from models import db, Quiz, Question, User, db_add_new_data, db_add_quiz, db_edit_quiz, db_add_question, db_edit_question
+from models import db, Quiz, Question, User, db_add_new_data, db_add_quiz, db_edit_quiz, db_add_question, db_edit_question, db_delete_question, db_delete_quiz
 from random import shuffle
 
 BASE_DIR = os.getcwd()
@@ -77,7 +77,7 @@ def question():
 
 
 @app.route('/questions/')
-def vew_questions():
+def view_questions():
     questions = Question.query.all()
     print(questions)
     return render_template('questions.html', questions = questions)
@@ -92,7 +92,15 @@ def add_question():
     print(question)
     with app.app_context():
         db_add_question(question_name, question_answer, question_wrong1, question_wrong2, question_wrong3)
-    return redirect(url_for('view_question'))
+    return redirect(url_for('view_questions'))
+
+@app.route('/delete_question/', methods = ['POST'])
+def delete_question():    
+    question_id = request.form.get('question_id')
+    with app.app_context():
+        db_delete_question(question_id)
+    return redirect(url_for('view_questions'))
+
 
 @app.route('/edit_question/', methods = ['GET', 'POST'])
 def edit_question():
@@ -115,7 +123,7 @@ def edit_question():
 
         with app.app_context():
             db_edit_question(question_id, question_question, question_answer, question_wrong1, question_wrong2, question_wrong3)
-        return redirect(url_for('view_quizes'))
+        return redirect(url_for('view_questions'))
 
 @app.route('/result/')
 def result():
@@ -131,6 +139,14 @@ def add_quiz():
     print(quiz)
     with app.app_context():
         db_add_quiz(quiz)
+    return redirect(url_for('view_quizes'))
+
+
+@app.route('/delete_quiz/', methods = ['POST'])
+def delete_quiz():    
+    quiz_id = request.form.get('quiz_id')
+    with app.app_context():
+        db_delete_quiz(quiz_id)
     return redirect(url_for('view_quizes'))
 
 

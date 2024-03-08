@@ -4,8 +4,9 @@
 {% block content %}
 
 
-<h2>Вопросы</h2>
-<div class="start_form wrapper">
+<h2>Квизы</h2>
+<p class="add_quiz"><a href="#add_quiz"><button><img src="/static/ico/add.ico"></button></a></p>
+<div class="start_form quizes_form">
     <div class="row hrow">
         <div>Quiz ID</div>
         <div>Quiz Name</div>
@@ -22,23 +23,26 @@
                 <div>{{ quiz.question| list | length}}</div>
                 <!-- <form action="/edit_quiz/"> -->
                 <form method="GET" action="/edit_quiz/">
-                    <input type="submit" name="quiz_id" value={{quiz.id}} />
+                    <button type="submit" name="quiz_id" value={{quiz.id}}>
+                        <image src="/static/ico/edit.ico"/>
+                    </button>
+                </form>              
+                <form method="POST" action="/delete_quiz/">
+                    <button type="submit" name="quiz_id" value={{quiz.id}}>
+                        <image src="/static/ico/delete.ico"/>
+                    </button>
                 </form>
-                
-                <div><a href="#add_quiz"><button>New</button></a></div>
-                <div><button>Уд</button></div>
         </div>
     {% endfor %}
 </div>
 
-<a href="#add_quiz">Add quiz</a>
+
 <!-- Модальное окно-->
 <div id="add_quiz" class="modal" aria-hidden="true">
     <div class="modal-header">
-        <p><a href="#close" title="Close" class="close">x</a></p>
+        <p><a href="#close" title="Close" class="close"><button><img src="/static/png/close.png"></button></a></p>
     </div>
     <div class="modal-body">    
-        Quiz
         <fieldset>
             <legend  align="center">Добавить КВИЗ</legend>
             <div class="form_conrainer">

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Квизы</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='quizes.css') }}">
+
+
 </head>
 <body>
 <div class="modal-body">  
@@ -21,6 +21,7 @@
                         <input type="hidden"  name="quiz_id" value="{{quiz_id}}"> 
                     </div>     
                     <div>  
+                        <p>Вопросы:</p>
                         {% for question in questions %}
                         <div>
                             <input type="checkbox" name="questions_checked" id = "checkbox{{loop.index}}" value="{{ question.id }}" />
@@ -29,7 +30,7 @@
                         {% endfor%}
                     </div>  
 
-                    <input type="submit" value="Изменить"><a href="/quizes/" title="cancel" class="close">Отменить</a> 
+                    <input type="submit" value="Изменить"><a href="/quizes/" title="cancel" class="close"><button>Отменить</button></a> 
                 </form>
             </div>
         </fieldset>

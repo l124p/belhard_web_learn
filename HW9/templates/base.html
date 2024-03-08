@@ -20,16 +20,21 @@
     </header>         
     
     <main>
-
+        {% if block == content_1 %}
         <section class="info">
             Section
-            <h2>Это базовый шаблон</h2>
+            {% block content_1 %}
+
+            {% endblock %}
         </section>
+        {% endif %}
+        {% if block == content_2 %}
         <section class="content">   
             Section  
             {% block content %}
 
             {% endblock %}
+        {% endif %}    
         
     </section>
     </main>  
