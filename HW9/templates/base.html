@@ -20,23 +20,12 @@
     </header>         
     
     <main>
-        {% if block == content_1 %}
-        <section class="info">
+        <section>
             Section
-            {% block content_1 %}
+            {% block content%}
 
             {% endblock %}
         </section>
-        {% endif %}
-        {% if block == content_2 %}
-        <section class="content">   
-            Section  
-            {% block content %}
-
-            {% endblock %}
-        {% endif %}    
-        
-    </section>
     </main>  
     
     <aside>Aside</aside>   

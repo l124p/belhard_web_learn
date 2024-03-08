@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Квизы</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='quizes.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 <div class="modal-body">  
     <div>   
-        Quiz
         <fieldset>
             <legend  align="center">Редактировать question</legend>
             <div class="form_conrainer">
                 <form action="/edit_question/" method="POST" enctype="multipart/form-data">
                     <div>  
-                        <input type="hidden"  name="question_id" value="{{question.id}}"> 
-                        <input type="text"  name="question_question" value="{{question.question}}"> 
-                        <input type="text"  name="question_answer" value="{{question.answer}}"> 
+                        <input type="hidden"  name="question_id" value="{{question.id}}">
+                        <input type="text"  name="question_question" value="{{question.question}}">
+                        <input type="text"  name="question_answer" value="{{question.answer}}">
                         <input type="text"  name="question_wrong1" value="{{question.wrong1}}">
                         <input type="text"  name="question_wrong2" value="{{question.wrong2}}">
                         <input type="text"  name="question_wrong3" value="{{question.wrong3}}">
@@ -32,12 +23,10 @@
                         </div>
                         {% endfor%}
                     </div>  
-
-                    <input type="submit" value="Изменить"><a href="/quizes/" title="cancel" class="close">Отменить</a> 
+                    <input style="width:fit-content" type="submit" value="Изменить"><a href="/questions/" title="cancel"><button>Отменить</button></a> 
                 </form>
             </div>
         </fieldset>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}
