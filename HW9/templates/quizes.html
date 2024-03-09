@@ -3,9 +3,9 @@
 
 {% block content %}
 
-
 <h2>Квизы</h2>
 <p class="add_quiz"><a href="#add_quiz"><button><img src="/static/ico/add.ico"></button></a></p>
+
 <div class="start_form quizes_form">
     <div class="row hrow">
         <div>Quiz ID</div>
@@ -25,7 +25,7 @@
                         <image src="/static/ico/edit.ico"/>
                     </button>
                 </form>              
-                <form method="POST" action="/delete_quiz/">
+                <form onsubmit="return confirm('Удалить Квиз?')" method="POST" action="/delete_quiz/?quiz_id={{quiz.id}}">
                     <button type="submit" name="quiz_id" value={{quiz.id}}>
                         <image src="/static/ico/delete.ico"/>
                     </button>
@@ -52,4 +52,5 @@
         </fieldset>
     </div>
 </div>
+
 {% endblock %}

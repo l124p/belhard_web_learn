@@ -174,10 +174,13 @@ def edit_quiz():
 def view_quizes():
     quizes = Quiz.query.all()
     users = User.query.all()
-    count_questions = quizes[0].question
-    print(count_questions,sep='/n')
-    print(*quizes,sep='/n')
-    print(*users,sep='/n')
+    # try:
+    #     count_questions = quizes[0].question
+    # except:
+    #     count_questions = 0    
+    # print(count_questions,sep='/n')
+    # print(*quizes,sep='/n')
+    # print(*users,sep='/n')
     return render_template('quizes.html', quizes = quizes, users=users)
 
 
