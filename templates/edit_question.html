@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="modal-body">  
+    <div>   
+        <fieldset>
+            <legend  align="center">Редактировать question</legend>
+            <div class="form_conrainer">
+                <form action="/edit_question/" method="POST" enctype="multipart/form-data">
+                    <div>  
+                        <input type="hidden"  name="question_id" value="{{question.id}}">
+                        <input type="text"  name="question_question" value="{{question.question}}">
+                        <input type="text"  name="question_answer" value="{{question.answer}}">
+                        <input type="text"  name="question_wrong1" value="{{question.wrong1}}">
+                        <input type="text"  name="question_wrong2" value="{{question.wrong2}}">
+                        <input type="text"  name="question_wrong3" value="{{question.wrong3}}">
+                    </div>     
+                    <div>  
+                        {% for question in questions %}
+                        <div>
+                            <input type="checkbox" name="questions_checked" id = "checkbox{{loop.index}}" value="{{ question.id }}" />
+                            <label for="checkbox{{loop.index}}">{{ question }}</label>
+                        </div>
+                        {% endfor%}
+                    </div>  
+                    <input style="width:fit-content" type="submit" value="Изменить"><a href="/questions/" title="cancel"><button>Отменить</button></a> 
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квизы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='quizes.css') }}">
+</head>
+<body>
+    
+    <header >Header
+        <nav><ul class="main-menu">
+            <li><a href="/">Main</a></li>
+            <li><a href="/quizes">Quiz</a></li>
+            <li><a href="/questions">Questions</a></li>
+            <li>menu3</li>
+        </ul></nav> 
+    </header>         
+    
+    <main>
+        <section>
+            Section
+            {% block content%}
+
+            {% endblock %}
+        </section>
+    </main>  
+    
+    <aside>Aside</aside>   
+    
+    <footer>Footer</footer> 
+    
+
+    
+</body>
+</html>
