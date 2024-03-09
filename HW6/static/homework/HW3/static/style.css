@@ -1,0 +1,24 @@
+header{
+    background-color: rgb(182, 135, 227);
+    height: 20px;
+}
+nav{
+    background-color: khaki;
+    margin: 40px 10px;
+}
+main{
+    background-color: aquamarine;
+}
+section{
+    background-color: rgb(144, 137, 191);
+}
+article{
+    background-color: forestgreen;
+}
+footer{
+    background-color: brown;
+    min-height: 30px;
+}
+aside{
+    background-color: orange;
+}

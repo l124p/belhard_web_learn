@@ -1,0 +1,107 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h2>Вопросы</h2>
+<div class="test"><a href="#add_quiz"><button>New</button></a></div>
+<div class="start_form quizes_form">
+    <div class="row hrow">
+        <div>Quiz ID</div>
+        <div>Quiz Name</div>
+        <div>User ID</div>
+        <div>Count questions</div>
+        <div></div>
+        <div></div>        
+    </div>
+    {%for quiz in quizes %}
+        <div class="row">            
+                <div>{{quiz.id}}</div>
+                <div>{{quiz.name}}</div>
+                <div>{{quiz.user_id}}</div>
+                <div>{{ quiz.question| list | length}}</div>
+                <!-- <form action="/edit_quiz/"> -->
+                <form method="GET" action="/edit_quiz/">
+                    <input type="submit" name="quiz_id" value={{quiz.id}} />
+                </form>              
+                <div><button>Уд</button></div>
+        </div>
+    {% endfor %}
+</div>
+
+
+<!-- Модальное окно-->
+<div id="add_quiz" class="modal" aria-hidden="true">
+    <div class="modal-header">
+        <p><a href="#close" title="Close" class="close">x</a></p>
+    </div>
+    <div class="modal-body">    
+        Quiz
+        <fieldset>
+            <legend  align="center">Добавить КВИЗ</legend>
+            <div class="form_conrainer">
+                <form action="/add_quiz" method="post" enctype="multipart/form-data">
+                        <input type="text"  name="quiz_name">
+                        <input type="submit" value="Отправить">           
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content_2 %}
+
+<h2>Вопросы</h2>
+<div class="test"><a href="#add_question"><button>New</button></a></div>
+<div class="wrapper">
+    <div class="row hrow">
+        <div>Вопроос</div>
+        <div>Ответ</div>
+        <div>Вариант 1</div>
+        <div>Вариант 2</div>
+        <div>Вариант 3</div>
+    </div>
+    {%for q in questions %}
+        <div class="row">            
+                <div>{{q.question}}</div>
+                <div>{{q.answer}}</div>
+                <div>{{q.wrong1}}</div>
+                <div>{{q.wrong2}}</div>
+                <div>{{q.wrong3}}</div>
+                <div><button>Ред</button></div>
+                <div><button>Уд</button></div>
+                <form method="GET" action="/edit_question/">
+                    <input type="submit" name="question_id" value={{q.id}} />
+                </form>
+        </div>
+    {% endfor %}
+
+</div>
+
+<!-- Модальное окно-->
+<div id="add_question" class="modal" aria-hidden="true">
+    <div class="modal-header">
+        <p><a href="#close" title="Close" class="close">x</a></p>
+    </div>
+    <div class="modal-body">    
+        question
+        <fieldset>
+            <legend  align="center">Добавить question</legend>
+            <div class="form_conrainer">
+                <form action="/add_question/" method="post" enctype="multipart/form-data">
+                        <input type="text"  name="question_name">
+                        <input type="text"  name="question_answer">
+                        <input type="text"  name="question_wrong1">
+                        <input type="text"  name="question_wrong2">
+                        <input type="text"  name="question_wrong3">
+                        <input type="submit" value="Отправить">           
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+{% endblock %}

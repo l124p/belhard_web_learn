@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="quizes_edit_form1">  
+    <div>   
+        <fieldset>
+            <legend  align="center">Редактировать КВИЗ</legend>
+            <div class="form_conrainer_">
+                <form action="/edit_quiz/" method="POST" enctype="multipart/form-data">
+                    <div>  
+                        <input type="text" required="true" name="quiz_name" placeholder="Квиз" value="{{quiz_name}}">
+                        <input type="hidden"  name="quiz_id" value="{{quiz_id}}"> 
+                    </div>     
+                    <div>  
+                        <p>Вопросы:</p>
+                        {% for question in questions %}
+                        <div>
+                            <p><input type="checkbox" name="questions_checked" id = "checkbox{{loop.index}}" value="{{ question.id }}" />
+                            <label for="checkbox{{loop.index}}">{{ question }}</label></p>
+                        </div>
+                        {% endfor%}
+                    </div>  
+                    <input type="submit" value="Изменить"><a href="/quizes/" title="cancel"><button>Отменить</button></a> 
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</div>
+{% endblock %}
